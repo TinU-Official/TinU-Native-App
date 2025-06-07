@@ -1,3 +1,4 @@
+import styled from "@emotion/native";
 import { Text, View } from "react-native";
 
 export default function Index() {
@@ -9,7 +10,11 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <TestText>하하하 testefd</TestText>
     </View>
   );
 }
+
+const TestText = styled(Text)`
+  ${({ theme }) => theme.fonts.title1_sb_24}
+`;
