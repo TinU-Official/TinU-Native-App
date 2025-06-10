@@ -1,6 +1,6 @@
 import styled from "@emotion/native";
 import { memo, useEffect, useRef } from "react";
-import { ScrollView, TouchableWithoutFeedback } from "react-native";
+import { ScrollView, TouchableWithoutFeedback, View } from "react-native";
 import { ChatText } from "./ChatBottomSheet";
 import { DailyChatGroup } from "./DailyChatGroup";
 
@@ -17,20 +17,23 @@ export const ChatScreen = memo(function ChatScreen({ chatList, closeBottomSheet 
   }, [chatList]);
 
   return (
-    <TouchableWithoutFeedback onPress={closeBottomSheet}>
-      <ChatScreenWrapper
-        ref={scrollRef}
-        contentContainerStyle={{
-          flexGrow: 1,
-          gap: 25,
-          padding: 25,
-          paddingHorizontal: 16,
-        }}
-        showsVerticalScrollIndicator={false}
-      >
-        <DailyChatGroup chatList={chatList} />
-      </ChatScreenWrapper>
-    </TouchableWithoutFeedback>
+    <ChatScreenWrapper
+      ref={scrollRef}
+      contentContainerStyle={{
+        flexGrow: 1,
+        gap: 25,
+        paddingTop: 35,
+        paddingBottom: 85,
+        paddingHorizontal: 16,
+      }}
+      showsVerticalScrollIndicator={false}
+    >
+      <TouchableWithoutFeedback onPress={closeBottomSheet}>
+        <View style={{ flex: 1 }}>
+          <DailyChatGroup chatList={chatList} />
+        </View>
+      </TouchableWithoutFeedback>
+    </ChatScreenWrapper>
   );
 });
 
