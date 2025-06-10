@@ -7,7 +7,7 @@ import { Header } from "@/components/common/Header";
 
 import styled from "@emotion/native";
 import { useCallback, useState } from "react";
-import { useWindowDimensions } from "react-native";
+import { KeyboardAvoidingView, Platform, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const mock = {
@@ -86,24 +86,26 @@ export default function Chat() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-      <ChatPageWrapper style={{ height, flex: 1 }}>
-        <Header
-          isSticky
-          left={<BackButton link="chat-list" />}
-          center={<Nickname>{mock.nickname}</Nickname>}
-          right={<MoreButton />}
-        />
-        <ProductInfo />
-        <ChatScreenContainer>
-          <ChatScreen chatList={chatList} closeBottomSheet={closeBottomSheet} />
-        </ChatScreenContainer>
-        <ChatBottomSheet
-          handleSendChat={handleSendChat}
-          isBottomSheetOpen={isBottomSheetOpen}
-          closeBottomSheet={closeBottomSheet}
-          toggleBottomSheet={toggleBottomSheet}
-        />
-      </ChatPageWrapper>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <ChatPageWrapper style={{ height, flex: 1 }}>
+          <Header
+            isSticky
+            left={<BackButton link="chat-list" />}
+            center={<Nickname>{mock.nickname}</Nickname>}
+            right={<MoreButton />}
+          />
+          <ProductInfo />
+          <ChatScreenContainer>
+            <ChatScreen chatList={chatList} closeBottomSheet={closeBottomSheet} />
+          </ChatScreenContainer>
+          <ChatBottomSheet
+            handleSendChat={handleSendChat}
+            isBottomSheetOpen={isBottomSheetOpen}
+            closeBottomSheet={closeBottomSheet}
+            toggleBottomSheet={toggleBottomSheet}
+          />
+        </ChatPageWrapper>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
