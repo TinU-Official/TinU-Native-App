@@ -4,7 +4,8 @@ import { SecondBanner } from "@/components/landing/SecondBanner";
 import { ThirdBanner } from "@/components/landing/ThirdBanner";
 import { useActiveIndicator } from "@/hooks/useActiveIndicator";
 import styled from "@emotion/native";
-import { ScrollView, useWindowDimensions } from "react-native";
+import { router } from "expo-router";
+import { ScrollView, Text, TouchableOpacity, useWindowDimensions } from "react-native";
 
 export default function Index() {
   const { height } = useWindowDimensions();
@@ -34,6 +35,9 @@ export default function Index() {
             measureBanner("first", y, height);
           }}
         />
+        <TouchableOpacity onPress={() => router.push("/chat")}>
+          <Text>채팅 테스트</Text>
+        </TouchableOpacity>
         <SecondBanner
           ref={secondBannerRef}
           onLayout={(event) => {

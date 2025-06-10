@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { StatusBar } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,8 +27,10 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Stack>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
+      <Stack initialRouteName="chat/index">
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="chat/index" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
