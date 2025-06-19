@@ -88,9 +88,8 @@ export default function Chat() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-        <ChatPageWrapper style={{ height, flex: 1 }}>
+        <ChatPageWrapper>
           <Header
-            isSticky
             left={<BackButton link="chat-list" />}
             center={<Nickname>{mock.nickname}</Nickname>}
             right={<MoreButton />}
@@ -114,8 +113,6 @@ const ChatPageWrapper = styled.View`
 
 const ChatScreenContainer = styled.View`
   flex: 1;
-  margin-top: 130px;
-  z-index: 1;
 `;
 
 const Nickname = styled.Text`

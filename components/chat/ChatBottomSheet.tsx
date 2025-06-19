@@ -66,10 +66,6 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
 }
 
 const ChatBottomSheetWrapper = styled(View)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   width: 100%;
   height: 68px;
   padding: 16px 13px;
@@ -79,7 +75,6 @@ const ChatBottomSheetWrapper = styled(View)`
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   background-color: ${({ theme }) => theme.colors.white};
-  z-index: 10;
 `;
 
 const OpenBottomSheetButton = styled(TouchableOpacity)`

@@ -1,7 +1,6 @@
 import styled from "@emotion/native";
 import { useEffect, useRef } from "react";
 import { ScrollView, View } from "react-native";
-import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 import { ChatText } from "./ChatBottomSheet";
 import { DailyChatGroup } from "./DailyChatGroup";
 
@@ -19,23 +18,20 @@ export function ChatScreen({ messages = [] }: ChatScreenProps) {
   }, [messages]);
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
-      <Container>
-        <ScrollView
-          ref={scrollViewRef}
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingVertical: 16,
-            paddingHorizontal: 16,
-          }}
-          onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
-          onLayout={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
-          showsVerticalScrollIndicator={false}
-        >
-          <DailyChatGroup chatList={messages} />
-        </ScrollView>
-      </Container>
-    </KeyboardAvoidingView>
+    <Container>
+      <ScrollView
+        ref={scrollViewRef}
+        contentContainerStyle={{
+          paddingVertical: 16,
+          paddingHorizontal: 16,
+        }}
+        onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+        onLayout={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+        showsVerticalScrollIndicator={false}
+      >
+        <DailyChatGroup chatList={messages} />
+      </ScrollView>
+    </Container>
   );
 }
 

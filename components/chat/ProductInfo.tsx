@@ -20,12 +20,6 @@ export const ProductInfo = memo(function ProductInfo() {
 });
 
 const ProductInfoWrapper = styled.View`
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  z-index: 5;
-
   flex-direction: row;
   align-items: center;
   gap: 17px;
