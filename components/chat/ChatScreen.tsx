@@ -44,5 +44,5 @@ export function ChatScreen({ messages = [], onSendMessage }: ChatScreenProps) {
 
 const Container = styled(View)`
   flex: 1;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.grey_2};
 `;
