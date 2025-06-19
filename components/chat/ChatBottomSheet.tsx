@@ -72,11 +72,10 @@ const ChatBottomSheetWrapper = styled(View)`
   right: 0;
   width: 100%;
   height: 68px;
-  padding: 0 13px;
+  padding: 16px 13px;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  padding-top: 16px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   background-color: ${({ theme }) => theme.colors.white};
