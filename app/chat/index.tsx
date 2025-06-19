@@ -6,7 +6,7 @@ import { BackButton } from "@/components/common/BackButton";
 import { Header } from "@/components/common/Header";
 
 import styled from "@emotion/native";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { KeyboardAvoidingView, Platform, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -19,70 +19,81 @@ const mockChatList: ChatText[] = [
     id: "1",
     message: "안녕하숑",
     timestamp: Date.now(),
+    isUser: false,
   },
   {
     id: "2",
     message: "세숑이숑",
     timestamp: Date.now(),
+    isUser: true,
   },
   {
     id: "3",
     message: "안녕하숑",
     timestamp: Date.now(),
+    isUser: false,
   },
   {
     id: "4",
     message: "세숑이숑",
     timestamp: Date.now(),
+    isUser: true,
   },
   {
     id: "5",
     message: "인녕하숑",
     timestamp: Date.now(),
+    isUser: false,
   },
   {
     id: "6",
     message: "세숑이숑",
     timestamp: Date.now(),
+    isUser: true,
   },
   {
     id: "7",
     message: "안녕하숑",
     timestamp: Date.now(),
+    isUser: false,
   },
   {
     id: "8",
     message: "세숑이숑",
     timestamp: Date.now(),
+    isUser: true,
   },
   {
     id: "9",
     message: "안녕하숑",
     timestamp: Date.now(),
+    isUser: false,
   },
   {
     id: "10",
     message: "세숑이숑",
     timestamp: Date.now(),
+    isUser: true,
   },
 ];
 
 export default function Chat() {
   const { height } = useWindowDimensions();
   const [chatList, setChatList] = useState(mockChatList);
-  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
 
   const handleSendChat = (chat: ChatText) => {
     setChatList((prev) => [...prev, chat]);
   };
 
-  const toggleBottomSheet = () => {
-    setIsBottomSheetOpen((prev) => !prev);
+  const handleSendMessage = (text: string) => {
+    const newMessage: ChatText = {
+      id: String(Date.now()),
+      message: text,
+      timestamp: Date.now(),
+      isUser: true,
+    };
+    setChatList((prev) => [...prev, newMessage]);
   };
-
-  const closeBottomSheet = useCallback(() => {
-    setIsBottomSheetOpen(false);
-  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -96,14 +107,9 @@ export default function Chat() {
           />
           <ProductInfo />
           <ChatScreenContainer>
-            <ChatScreen chatList={chatList} closeBottomSheet={closeBottomSheet} />
+            <ChatScreen messages={chatList} onSendMessage={handleSendMessage} />
           </ChatScreenContainer>
-          <ChatBottomSheet
-            handleSendChat={handleSendChat}
-            isBottomSheetOpen={isBottomSheetOpen}
-            closeBottomSheet={closeBottomSheet}
-            toggleBottomSheet={toggleBottomSheet}
-          />
+          <ChatBottomSheet handleSendChat={handleSendChat} />
         </ChatPageWrapper>
       </KeyboardAvoidingView>
     </SafeAreaView>

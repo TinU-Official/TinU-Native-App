@@ -13,14 +13,13 @@ export function DailyChatGroup({ chatList }: DailyChatGroupProps) {
     <DailyChatGroupWrapper>
       <DateText>2024년 10월 1일 (월)</DateText>
       <ChatListWrapper>
-        {chatList.map((chat, index) => {
-          const isReceiver = index % 2 === 0;
+        {chatList.map((chat) => {
           return (
-            <ChatBubbleWrapper key={chat.id} style={{ justifyContent: isReceiver ? "flex-start" : "flex-end" }}>
-              {isReceiver ? (
-                <ReceiverChatBubble chatText={chat.message} profileImg="https://via.placeholder.com/30" />
-              ) : (
+            <ChatBubbleWrapper key={chat.id} style={{ justifyContent: chat.isUser ? "flex-end" : "flex-start" }}>
+              {chat.isUser ? (
                 <SenderChatBubble chatText={chat.message} />
+              ) : (
+                <ReceiverChatBubble chatText={chat.message} profileImg="https://via.placeholder.com/30" />
               )}
             </ChatBubbleWrapper>
           );
