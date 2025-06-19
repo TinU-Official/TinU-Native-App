@@ -9,7 +9,7 @@ export interface ChatText {
   id: string;
   message: string;
   timestamp: number;
-  isUser?: boolean; // Optional for backward compatibility
+  isUser?: boolean;
 }
 
 interface ChatBottomSheetProps {
@@ -49,7 +49,7 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
         <ChattingInput
           value={chattingInputValue}
           onChangeText={handleChangeChattingInput}
-          placeholder="메세지 보내기"
+          placeholder="메시지 보내기"
           placeholderTextColor="#9b9b9b"
           multiline={false}
         />

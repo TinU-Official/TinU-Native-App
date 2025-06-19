@@ -22,7 +22,7 @@ export function ChatScreen({ messages = [] }: ChatScreenProps) {
       <ScrollView
         ref={scrollViewRef}
         contentContainerStyle={{
-          paddingVertical: 16,
+          paddingVertical: 25,
           paddingHorizontal: 16,
         }}
         onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}

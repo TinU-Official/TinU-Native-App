@@ -7,7 +7,7 @@ import { Header } from "@/components/common/Header";
 
 import styled from "@emotion/native";
 import { useState } from "react";
-import { KeyboardAvoidingView, Platform, useWindowDimensions } from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const mock = {
@@ -17,68 +17,67 @@ const mock = {
 const mockChatList: ChatText[] = [
   {
     id: "1",
-    message: "안녕하숑",
+    message: "테스트",
     timestamp: Date.now(),
     isUser: false,
   },
   {
     id: "2",
-    message: "세숑이숑",
+    message: "테스트2",
     timestamp: Date.now(),
     isUser: true,
   },
   {
     id: "3",
-    message: "안녕하숑",
+    message: "테스트3",
     timestamp: Date.now(),
     isUser: false,
   },
   {
     id: "4",
-    message: "세숑이숑",
+    message: "테스트4",
     timestamp: Date.now(),
     isUser: true,
   },
   {
     id: "5",
-    message: "인녕하숑",
+    message: "테스트5",
     timestamp: Date.now(),
     isUser: false,
   },
   {
     id: "6",
-    message: "세숑이숑",
+    message: "테스트6",
     timestamp: Date.now(),
     isUser: true,
   },
   {
     id: "7",
-    message: "안녕하숑",
+    message: "테스트7",
     timestamp: Date.now(),
     isUser: false,
   },
   {
     id: "8",
-    message: "세숑이숑",
+    message: "테스트8",
     timestamp: Date.now(),
     isUser: true,
   },
   {
     id: "9",
-    message: "안녕하숑",
+    message: "테스트9",
     timestamp: Date.now(),
     isUser: false,
   },
   {
     id: "10",
-    message: "세숑이숑",
+    message: "테스트10",
     timestamp: Date.now(),
     isUser: true,
   },
 ];
 
 export default function Chat() {
-  const { height } = useWindowDimensions();
   const [chatList, setChatList] = useState(mockChatList);
 
   const handleSendChat = (chat: ChatText) => {

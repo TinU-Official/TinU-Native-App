@@ -3,13 +3,13 @@ import { Image } from "react-native";
 
 interface ReceiverChatBubbleProps {
   chatText: string;
-  profileImg: string;
+  profileImg: any;
 }
 
 export function ReceiverChatBubble({ chatText, profileImg }: ReceiverChatBubbleProps) {
   return (
     <ReceiverChatBubbleContainer>
-      <ReceiverProfileImage source={{ uri: profileImg }} />
+      <ReceiverProfileImage source={profileImg} />
       <FlexEndAlignBox>
         <ReceiverChatBubbleWrapper>
           <ReceiverChatBubbleText>{chatText}</ReceiverChatBubbleText>

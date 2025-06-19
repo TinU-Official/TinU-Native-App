@@ -19,7 +19,10 @@ export function DailyChatGroup({ chatList }: DailyChatGroupProps) {
               {chat.isUser ? (
                 <SenderChatBubble chatText={chat.message} />
               ) : (
-                <ReceiverChatBubble chatText={chat.message} profileImg="https://via.placeholder.com/30" />
+                <ReceiverChatBubble
+                  chatText={chat.message}
+                  profileImg={require("@/assets/imgs/img_dummy_profile.png")}
+                />
               )}
             </ChatBubbleWrapper>
           );
