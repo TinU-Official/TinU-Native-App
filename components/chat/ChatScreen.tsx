@@ -3,15 +3,13 @@ import { useEffect, useRef } from "react";
 import { ScrollView, View } from "react-native";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 import { ChatText } from "./ChatBottomSheet";
-import { ChatInput } from "./ChatInput";
 import { DailyChatGroup } from "./DailyChatGroup";
 
 interface ChatScreenProps {
   messages: ChatText[];
-  onSendMessage: (text: string) => void;
 }
 
-export function ChatScreen({ messages = [], onSendMessage }: ChatScreenProps) {
+export function ChatScreen({ messages = [] }: ChatScreenProps) {
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
@@ -36,7 +34,6 @@ export function ChatScreen({ messages = [], onSendMessage }: ChatScreenProps) {
         >
           <DailyChatGroup chatList={messages} />
         </ScrollView>
-        <ChatInput onSend={onSendMessage} />
       </Container>
     </KeyboardAvoidingView>
   );

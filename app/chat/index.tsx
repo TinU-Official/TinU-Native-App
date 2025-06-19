@@ -85,16 +85,6 @@ export default function Chat() {
     setChatList((prev) => [...prev, chat]);
   };
 
-  const handleSendMessage = (text: string) => {
-    const newMessage: ChatText = {
-      id: String(Date.now()),
-      message: text,
-      timestamp: Date.now(),
-      isUser: true,
-    };
-    setChatList((prev) => [...prev, newMessage]);
-  };
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
@@ -107,7 +97,7 @@ export default function Chat() {
           />
           <ProductInfo />
           <ChatScreenContainer>
-            <ChatScreen messages={chatList} onSendMessage={handleSendMessage} />
+            <ChatScreen messages={chatList} />
           </ChatScreenContainer>
           <ChatBottomSheet handleSendChat={handleSendChat} />
         </ChatPageWrapper>

@@ -33,6 +33,7 @@ export function ChatBottomSheet({ handleSendChat }: ChatBottomSheetProps) {
         id: Date.now().toString(),
         message: chattingInputValue,
         timestamp: Date.now(),
+        isUser: true,
       };
       handleSendChat(newChat);
       setChattingInputValue("");
